@@ -61,10 +61,8 @@ class HeightMap:
         new_perimeter = [[x, y]]
         while len(new_perimeter) > 0:
             sample_point = new_perimeter.pop()
-            current_height = self.get_height(sample_point[0], sample_point[1])
             neighbours = self.get_neighbours(sample_point[0], sample_point[1])
-            cells_to_add = [n for n in neighbours if self.get_height(n[0], n[1]) >= current_height]
-            cells_to_add = [n for n in cells_to_add if self.get_height(n[0], n[1]) < 9]
+            cells_to_add = [n for n in neighbours if self.get_height(n[0], n[1]) < 9]
             cells_to_add = [n for n in cells_to_add if n not in basin]
             new_perimeter.extend(cells_to_add)
             basin.extend(cells_to_add)
